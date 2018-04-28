@@ -17,25 +17,25 @@ public class DataType {
     //private final byte[] DATA_TYPE = new byte[] {68, 73, 74, 76, 83, 84, 85};
     //DataHeader class DATA_TYPE 과 맞춰야 한다.
 
-    public byte getLoginCode(){
+    public static byte getLoginCode(){
         return LOGIN;
     }
-    public byte getJoinCode(){
+    public static byte getJoinCode(){
         return JOIN;
     }
-    public byte getInsertCode(){
+    public static byte getInsertCode(){
         return INSERT;
     }
-    public byte getDeleteCode(){
+    public static byte getDeleteCode(){
         return DELETE;
     }
-    public byte getSelectCode(){
+    public static byte getSelectCode(){
         return SELECT;
     }
-    public byte getSttCode(){
+    public static byte getSttCode(){
         return STT;
     }
-    public byte getUpdateCode(){
+    public static byte getUpdateCode(){
         return UPDATE;
     }
 

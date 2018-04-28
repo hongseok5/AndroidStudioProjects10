@@ -12,7 +12,7 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-
+        Log.d("Intent test","Start second activity 3");
        // Toast.makeText(this, "[B] onCreate() 함수 호출", Toast.LENGTH_SHORT).show();
 
     }
@@ -20,6 +20,7 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     protected void onStart(){
         super.onStart();
+        Log.d("Intent test","Start second activity 4");
       //  Log.d("Intent test","Start second activity 2");
      //   Toast.makeText(this, "[B] onStart() 함수 호출", Toast.LENGTH_SHORT).show();
     }

@@ -18,10 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SttActivity"></activity>
-        <activity android:name=".SecondActivity"></activity>
+        <activity android:name=".SttActivity" />
+        <activity android:name=".SecondActivity" />
         <!-- 안드로이드 name 은 꼭 들어가야 하며 패키지 명이 다를 경우엔 명시해 줘야 한다. -->
 
+        <activity android:name=".SettingActivity" />
+
+        <service
+            android:name="com.example.abreak.daemonservice.DaemonService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
