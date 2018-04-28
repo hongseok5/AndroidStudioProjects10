@@ -73,12 +73,12 @@ public class SttActivity extends AppCompatActivity {
     }
 
     //https://www.androidhive.info/2014/07/android-speech-to-text-tutorial/
-
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
+    */
 
 }

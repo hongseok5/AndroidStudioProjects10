@@ -1,48 +1,50 @@
 package com.example.abreak.util;
 
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+
 public class DataBody {
 
-    private final static byte SIZE = 32;
-    private final byte BODY_SIZE = 65;
-    /*
-    public byte[] fillId(String id) {
-        byte[] filledId = null;
+        private final byte ETX = 0x03;
+        private int dataSize = 0;
+        protected byte[] dataBody;
+        private final static byte PARAM_SIZE = 32;
 
-        return filledId;
-    }
-    */
-    public static byte[] fillPw(String pw) {
+        public DataBody(List<String> params,byte bodyType) throws UnsupportedEncodingException {
+            //assume that all parameter size is below 32 Bytes except main stt data.
 
-        System.out.println("파라미터는 : " + pw);
-        byte[] tempFilledPw = null;
-        tempFilledPw = pw.getBytes();
-        // 위에서 사이즈를 정해주더라도 getByte 이후에는 사이즈가 받은 바이트 수 만큼으로 재정의 된다.
-        if(tempFilledPw.length > SIZE) {
-            System.out.println("data is too big");
-            return null;
-        }else if(tempFilledPw.length == SIZE) {
-            System.out.println("데이터 사이즈가 같다");
-            return tempFilledPw;
-        }else{
-            int gap = SIZE - tempFilledPw.length;
-            byte[] filledPw = new byte[32];
-            System.out.println("gap의 크기는 " + gap);
-
-            for(int i=0; i < tempFilledPw.length; i++) {
-                filledPw[i] = tempFilledPw[i];
-                System.out.println(filledPw[i] + "  " + tempFilledPw[i]);
-            }
-
-
-            for(int i = 0; i < gap ; i++) {
-                System.out.println(tempFilledPw.length + i );
-                filledPw[tempFilledPw.length + i] = DataHeader.NVL;
-//				System.out.println(filledPw[filledPw.length + i]);
-
-            }
-            System.out.println("성공적으로 채움");
-            return filledPw;
-
+            this.dataSize = params.size() * 32 + 1;
+            System.out.println("DataBody : " + dataSize);
+            dataBody = new byte[dataSize];
+            dataBody[dataSize - 1] = ETX;
+            fillWithNVL(params);
         }
-    }
+
+        public void fillWithNVL(List<String> params) throws UnsupportedEncodingException {
+            // fill 32byte of id and pw
+            int index = 0;
+            //int paramNumbers = params.size();
+
+
+            for (String param : params) {
+                byte[] tempFilledData = param.getBytes("UTF-8");
+                int gap = PARAM_SIZE - tempFilledData.length;
+                for (int i = 0; i < tempFilledData.length; i++) {
+                    dataBody[index++] = tempFilledData[i];
+                }
+                for (int i = 0; i < gap; i++) {
+                    dataBody[index++] = 0x00;
+                }
+            }
+        }
+
+        public byte[] getDataBody() {
+            return dataBody;
+        }
+
+        public int getDataSize() {
+            return this.dataSize;
+        }
+
+
 }

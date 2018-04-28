@@ -1,5 +1,6 @@
 package com.example.abreak.breakstt;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.abreak.util.ConnectThread;
+import com.example.abreak.util.DataHeader;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -16,12 +20,16 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketException;
-import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
 
     EditText userId;
     EditText pswd;
+    private static final String SERVER_IP = "45.119.147.81";
+    private static final int SERVER_PORT = 9190;
     //private final String IP_ADDRESS = "000.000.000.00";
 
     @Override
@@ -32,46 +40,68 @@ public class MainActivity extends AppCompatActivity {
         userId = (EditText) findViewById(R.id.userId);
         pswd = (EditText) findViewById(R.id.userPswd);
 
-        /*
         Button btnLogin = (Button) findViewById(R.id.btnSubmit);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Toast.makeText(getApplicationContext(),"Button clicked",Toast.LENGTH_LONG).show();
+                List<String> Parms = new ArrayList<>();
+
+                Parms.add(userId.getText().toString());
+                Parms.add(pswd.getText().toString());
+            ConnectThread thread = new ConnectThread(SERVER_IP,SERVER_PORT,Parms);
+            thread.start();
 
             }
         });
-        */
+
+        Button btnJoin = (Button) findViewById(R.id.btnJoin);
+
+
+        btnJoin.setOnClickListener(new View.OnClickListener(){
+            @Override public void onClick(View v){
+                Toast.makeText(getApplicationContext(),"Button clicked",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                Log.d("Intent test","Start second activity 1");
+                startActivity(intent);
+                Log.d("Intent test","Start second activity 2");
+            }
+        });
+
     }
 
     private String ServerConnected(String strAddress,String strData) {
         String RESULT_TEXT;
-
-        ConnectThread thread = new ConnectThread(strAddress, strData);
+       /* ConnectThread thread = new ConnectThread(strAddress, strData);
         //45.119.147.81
-        thread.start();
-
-
-        RESULT_TEXT = thread.ConnectMessage;
-
-
+        thread.start();*/
+        RESULT_TEXT = "";
         return RESULT_TEXT;
     }
 
     public void btnSubmit_Click(View view)
     {
-        String loginData =
-                userId.getText().toString().trim() + "|" + pswd.getText().toString().trim() + "|";
-        String MASSGE = ServerConnected("45.119.147.81",loginData);
-        Toast.makeText(getApplicationContext(),MASSGE,Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"Button clicked",Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+        Log.d("Intent test","Start second activity 1");
+        startActivity(intent);
+        Log.d("Intent test","Start second activity 2");
+    }
 
+    public void btnJoin_Click(View view)
+    {
+        Toast.makeText(getApplicationContext(),"Button clicked",Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+        Log.d("Intent test","Start second activity 1");
+        startActivity(intent);
+        Log.d("Intent test","Start second activity 2");
     }
     /**
      * C에서 받고 전송해주는 데이터는 구조체 Char타입을 기준으로만 설명한다
      * 핸드세이크 모델, 폴링을 계속 던져주면 받는다
      */
-
+/*
     class ConnectThread extends Thread{
 
         String hostname;
@@ -128,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-    }
+    }*/
 
 }
 

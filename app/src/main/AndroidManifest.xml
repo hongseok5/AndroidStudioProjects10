@@ -19,6 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".SttActivity"></activity>
+        <activity android:name=".SecondActivity"></activity>
+        <!-- 안드로이드 name 은 꼭 들어가야 하며 패키지 명이 다를 경우엔 명시해 줘야 한다. -->
+
     </application>
 
 </manifest>
