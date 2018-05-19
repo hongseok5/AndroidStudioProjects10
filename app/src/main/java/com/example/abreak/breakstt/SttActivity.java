@@ -28,7 +28,7 @@ public class SttActivity extends AppCompatActivity {
         txtSpeechInput = (TextView) findViewById(R.id.txtSpeechInput);
         btnSpeak = (ImageButton) findViewById(R.id.btnSpeak);
 
-        getActionBar().hide();
+        //getActionBar().hide();
 
         btnSpeak.setOnClickListener(new View.OnClickListener(){
 

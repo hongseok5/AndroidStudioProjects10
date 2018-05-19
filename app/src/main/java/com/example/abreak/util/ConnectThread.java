@@ -47,14 +47,12 @@ public class ConnectThread extends Thread {
             db = new DataBody(params, DataType.getLoginCode());
             DataMerging dm = new DataMerging(dh, db);
             socket.connect(new InetSocketAddress(hostName, port));
-
+            Log.d("ConnectThread : ", "socket connected sucessfully!" );
             OutputStream os = socket.getOutputStream();
+            Log.d("ConnectThread : ", "os generated !" );
             InputStream is = socket.getInputStream();
+            Log.d("ConnectThread : ", "is generated!" );
             //Login 성공 여부를 받기 위한 스트림
-
-
-
-
 
             os.write(dm.getMergedData());
             os.flush();

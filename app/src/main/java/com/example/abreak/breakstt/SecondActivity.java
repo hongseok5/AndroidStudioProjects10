@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class SecondActivity extends AppCompatActivity {
-
+    // 가입 액티비티로 쓰자
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

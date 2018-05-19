@@ -6,4 +6,34 @@
     android:layout_height="match_parent"
     tools:context="com.example.abreak.breakstt.SettingActivity">
 
+    <Button
+        android:id="@+id/callButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="전화걸기 "
+        android:textSize="20dp"
+        />
+    <Button
+        android:id="@+id/smsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="문자전송 "
+        android:textSize="20dp"
+        />
+    <Button
+        android:id="@+id/mainButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="메인으로 "
+        android:textSize="20dp"
+        />
+    <Button
+        android:id="@+id/webButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="웹페이지 "
+        android:textSize="20dp"
+        />
+
+
 </android.support.constraint.ConstraintLayout>
